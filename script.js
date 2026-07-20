@@ -10,12 +10,15 @@ canvas.addEventListener("click", (event) => {
   mousePressed(x, y);
 });
 
-for (let i = 0; i < 5; i++) {
-    for (let j = 0; j < 5; j++) {
-        ctx.strokeRect(80 * i, 80 * j, 80, 80);
+drawBoard(0, 0, 80, 80);
+
+function drawBoard(x, y, w, h) {
+    for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+            ctx.strokeRect(x + w * i, y+ h * j, w, h);
+        }
     }
 }
-
 
 function mousePressed(x, y) {
     console.log(`mouse press at: ${x}, ${y}`);
