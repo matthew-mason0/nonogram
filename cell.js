@@ -7,8 +7,13 @@ class Cell {
 
         this.i = i;
         this.j = j;
-
-        this.color = "red"
+        /*
+        State:
+        0 = unknown -> white
+        1 = filled -> dark-blue
+        2 = empty -> black
+        */
+        this.state = 0;
     }
 
     mouseOver(mX, mY) {
@@ -25,9 +30,23 @@ class Cell {
     }
 
     draw(ctx) {
-        ctx.fillStyle = "red";
+        this.styleCell(ctx);
         ctx.fillRect(this.x, this.y, this.w, this.h);
-        ctx.fillStyle = "black"
         ctx.strokeRect(this.x, this.y, this.w, this.h);
+    }
+
+    styleCell(ctx) {
+        ctx.strokeStyle = "black";
+        if (this.state === 0) {
+            ctx.fillStyle = "white";
+        } else if (this.state === 1) {
+            ctx.fillStyle = "rgb(0 0 128)";
+            ctx.strokeStyle = "white";
+        } else if (this.state === 2) {
+            ctx.fillStyle = "black";
+            ctx.strokeStyle = "white";
+        } else {
+            ctx.fillStyle = "red";
+        }
     }
 }
