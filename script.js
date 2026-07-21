@@ -10,17 +10,9 @@ canvas.addEventListener("click", (event) => {
   mousePressed(x, y);
 });
 
-const cells = [];
-drawBoard(0, 0, 80, 80);
-for (let i = 0; i < cells.length; i++) cells[i].draw(ctx);
-
-function drawBoard(x, y, w, h) {
-    for (let i = 0; i < 5; i++) {
-        for (let j = 0; j < 5; j++) {
-            cells.push(new Cell(x + w * i, y + h * j, w, h));
-        }
-    }
-}
+const board = new Board(0, 0, 400, 400);
+board.createCells();
+board.draw(ctx);
 
 function mousePressed(x, y) {
     console.log(`mouse press at: ${x}, ${y}`);
