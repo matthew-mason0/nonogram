@@ -1,5 +1,5 @@
 const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+window.ctx = canvas.getContext("2d");
 
 canvas.addEventListener("click", (event) => {
 	const rect = canvas.getBoundingClientRect();
@@ -12,7 +12,7 @@ canvas.addEventListener("click", (event) => {
 
 const board = new Board(0, 0, 400, 400);
 board.createCells();
-board.draw(ctx);
+board.draw();
 
 function mousePressed(x, y) {
     console.log(`mouse press at: ${x}, ${y}`);

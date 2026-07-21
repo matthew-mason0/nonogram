@@ -45,10 +45,10 @@ class Board {
         }
     }
 
-    draw(ctx) {
+    draw() {
         for (let i = 0; i < this.rows; i++) {
             for (let j = 0; j < this.rows; j++) {
-                this.cells[i][j].draw(ctx);
+                this.cells[i][j].draw();
             }
         }
     }

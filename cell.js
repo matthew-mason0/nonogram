@@ -28,15 +28,16 @@ class Cell {
     onClick() {
         console.log(`cell ${this.i}, ${this.j} was clicked`);
         this.state = (this.state + 1) % 3;
+        this.draw();
     }
 
-    draw(ctx) {
-        this.styleCell(ctx);
+    draw() {
+        this.styleCell();
         ctx.fillRect(this.x, this.y, this.w, this.h);
         ctx.strokeRect(this.x, this.y, this.w, this.h);
     }
 
-    styleCell(ctx) {
+    styleCell() {
         ctx.strokeStyle = "black";
         if (this.state === 0) {
             ctx.fillStyle = "white";
