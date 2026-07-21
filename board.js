@@ -1,56 +1,27 @@
 class Board {
-    constructor(x, y, w, h) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-
-        this.cells;
-        this.rows = 5;
-
-        this.cellW = this.w / (this.rows + 1);
-        this.cellH = this.h / (this.rows + 1);
+    constructor(rows) {
+        this.rows = rows;
+        this.cells = this.createCells(this.rows);
+        this.rowClues = [];
+        this.colClues = [];
     }
 
-    mouseOver(mX, mY) {
-        return (
-            mX > this.x &&
-            mX < this.x + this.w &&
-            mY > this.y &&
-            mY < this.y + this.h
-        )
-    }
-
-    onClick(mX, mY) {
-        for (let i = 0; i < this.rows; i++) {
-            for (let j = 0; j < this.rows; j++) {
-                if (this.cells[i][j].mouseOver(mX, mY)) this.cells[i][j].onClick();
+    createCells(rows) {
+        const cells = [];
+        for (let i = 0; i < rows; i++) {
+            cells[i] = [];
+            for (let j = 0; j < rows; j++) {
+                cells[i][j] = new Cell(i, j);
             }
         }
+        return cells;
     }
 
-    createCells() {
-        this.cells = [];
-        for (let i = 0; i < this.rows; i++) {
-            this.cells[i] = [];
-            for (let j = 0; j < this.rows; j++) {
-                this.cells[i][j] = new Cell(
-                    this.x + this.cellW * (i+1),
-                    this.y + this.cellH * (j+1),
-                    this.cellW, this.cellH,
-                    i,
-                    j
-                );
-            }
-        }
+    getCell(i, j) {
+        return this.cells[i][j];
     }
 
-    draw() {
-        ctx.strokeRect(this.x, this.y, this.w, this.h);
-        for (let i = 0; i < this.rows; i++) {
-            for (let j = 0; j < this.rows; j++) {
-                this.cells[i][j].draw();
-            }
-        }
+    toggleCell(i, j) {
+        this.cells[i][j].toggle();
     }
 }

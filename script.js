@@ -10,11 +10,6 @@ canvas.addEventListener("click", (event) => {
 	mousePressed(x, y);
 });
 
-const board = new Board(0, 0, 400, 400);
-board.createCells();
-board.draw();
-
 function mousePressed(x, y) {
     console.log(`mouse press at: ${x}, ${y}`);
-    if (board.mouseOver(x, y)) board.onClick(x, y);
 }
