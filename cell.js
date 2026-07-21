@@ -26,7 +26,7 @@ class Cell {
     }
 
     onClick() {
-
+        console.log(`cell ${this.i}, ${this.j} was clicked`);
     }
 
     draw(ctx) {
