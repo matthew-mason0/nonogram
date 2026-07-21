@@ -27,6 +27,7 @@ class Cell {
 
     onClick() {
         console.log(`cell ${this.i}, ${this.j} was clicked`);
+        this.state = (this.state + 1) % 3;
     }
 
     draw(ctx) {
