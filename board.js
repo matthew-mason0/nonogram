@@ -8,8 +8,8 @@ class Board {
         this.cells;
         this.rows = 5;
 
-        this.cellW = this.w / this.rows;
-        this.cellH = this.h / this.rows;
+        this.cellW = this.w / (this.rows + 1);
+        this.cellH = this.h / (this.rows + 1);
     }
 
     mouseOver(mX, mY) {
@@ -35,8 +35,8 @@ class Board {
             this.cells[i] = [];
             for (let j = 0; j < this.rows; j++) {
                 this.cells[i][j] = new Cell(
-                    this.x + this.cellW * i,
-                    this.y + this.cellH * j,
+                    this.x + this.cellW * (i+1),
+                    this.y + this.cellH * (j+1),
                     this.cellW, this.cellH,
                     i,
                     j
@@ -46,6 +46,7 @@ class Board {
     }
 
     draw() {
+        ctx.strokeRect(this.x, this.y, this.w, this.h);
         for (let i = 0; i < this.rows; i++) {
             for (let j = 0; j < this.rows; j++) {
                 this.cells[i][j].draw();
