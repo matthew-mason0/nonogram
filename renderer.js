@@ -6,35 +6,35 @@ class Renderer {
         this.y = 0;
         this.w = 400;
         this.h = 400;
+        this.cellW = this.w / (this.board.rows + 1);
+        this.cellH = this.h / (this.board.rows + 1);
     }
 
     drawBoard() {
         const rows = this.board.rows;
         const ctx = this.ctx;
-        const cellW = this.w / (rows+1);
-        const cellH = this.h / (rows+1);
         
         // container
         ctx.strokeRect(this.x, this.y, this.w, this.h);
         ctx.fillStyle = "gray";
-        ctx.fillRect(this.x, this.y, cellW, cellH)
+        ctx.fillRect(this.x, this.y, this.cellW, this.cellH)
 
         // headers
         ctx.strokeStyle = "black";
         for (let i = 1; i < rows; i++) {
             ctx.strokeRect(
-                this.x + i * cellW,
+                this.x + i * this.cellW,
                 this.y,
-                cellW,
-                cellH
+                this.cellW,
+                this.cellH
             );
         }
         for (let i = 1; i < rows; i++) {
             ctx.strokeRect(
                 this.x,
-                this.y + i * cellH,
-                cellW,
-                cellH
+                this.y + i * this.cellH,
+                this.cellW,
+                this.cellH
             );
         }
 
@@ -43,10 +43,10 @@ class Renderer {
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < rows; j++) {
                 ctx.strokeRect(
-                    this.x + cellW * (i+1),
-                    this.y + cellH * (j+1),
-                    cellW,
-                    cellH
+                    this.x + this.cellW * (i+1),
+                    this.y + this.cellH * (j+1),
+                    this.cellW,
+                    this.cellH
                 );
             }
         }
