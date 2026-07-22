@@ -48,8 +48,21 @@ class Renderer {
                     this.cellW,
                     this.cellH
                 );
+                ctx.fillStyle = this.getCellColor(i, j);
+                ctx.fillRect(
+                    this.x + this.cellW * (i+1),
+                    this.y + this.cellH * (j+1),
+                    this.cellW,
+                    this.cellH
+                );
             }
         }
+    }
+    getCellColor(i, j) {
+        const state = this.board.getCell(i, j).state;
+        if (state === 0) this.ctx.fillStyle = "white";
+        else if (state === 1) this.ctx.fillStyle = "black";
+        else if (state === 2) this.ctx.fillStyle = "blue";
     }
 
     getCellCoordsAt(mX, mY) {
