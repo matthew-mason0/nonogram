@@ -21,18 +21,18 @@ class Renderer {
 
         // headers
         ctx.strokeStyle = "black";
-        for (let i = 1; i < rows; i++) {
+        for (let col = 1; col < rows + 1; col++) {
             ctx.strokeRect(
-                this.x + i * this.cellW,
+                this.x + col * this.cellW,
                 this.y,
                 this.cellW,
                 this.cellH
             );
         }
-        for (let i = 1; i < rows; i++) {
+        for (let row = 1; row < rows + 1; row++) {
             ctx.strokeRect(
                 this.x,
-                this.y + i * this.cellH,
+                this.y + row * this.cellH,
                 this.cellW,
                 this.cellH
             );
@@ -40,36 +40,41 @@ class Renderer {
 
         // cells
         ctx.strokeStyle = "gray";
-        for (let i = 0; i < rows; i++) {
-            for (let j = 0; j < rows; j++) {
+        for (let row = 0; row < rows; row++) {
+            for (let col = 0; col < rows; col++) {
                 ctx.strokeRect(
-                    this.x + this.cellW * (i+1),
-                    this.y + this.cellH * (j+1),
+                    this.x + this.cellW * (col+1),
+                    this.y + this.cellH * (row+1),
                     this.cellW,
                     this.cellH
                 );
-                ctx.fillStyle = this.getCellColor(i, j);
+                ctx.fillStyle = this.getCellColor(row, col);
                 ctx.fillRect(
-                    this.x + this.cellW * (i+1),
-                    this.y + this.cellH * (j+1),
+                    this.x + this.cellW * (col+1),
+                    this.y + this.cellH * (row+1),
                     this.cellW,
                     this.cellH
                 );
             }
         }
     }
-    getCellColor(i, j) {
-        const state = this.board.getCell(i, j).state;
-        if (state === 0) this.ctx.fillStyle = "white";
-        else if (state === 1) this.ctx.fillStyle = "black";
-        else if (state === 2) this.ctx.fillStyle = "blue";
+    getCellColor(row, col) {
+        const state = this.board.getCell(row, col).state;
+        if (state === 0) return "white";
+        else if (state === 1) return "black";
+        else if (state === 2) return "blue";
+        return "white";
     }
 
     getCellCoordsAt(mX, mY) {
-        let col = Math.floor((mX - this.x) / this.cellW) - 1;
-        let row = Math.floor((mY - this.y) / this.cellH) - 1;
-        if (col < 0 || row < 0) return null;
-        console.log(`Cell clicked: (${col}, ${row})`);
+        const col = Math.floor((mX - this.x) / this.cellW) - 1;
+        const row = Math.floor((mY - this.y) / this.cellH) - 1;
+        if (col < 0 ||
+            row < 0 ||
+            col >= this.board.rows ||
+            row >= this.board.rows
+        ) return null;
+        console.log(`Cell clicked: [${row}, ${col}]`);
         return [row, col];
     }
 }
