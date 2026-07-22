@@ -11,8 +11,8 @@ class Renderer {
     drawBoard() {
         const rows = this.board.rows;
         const ctx = this.ctx;
-        const cellW = this.w / rows;
-        const cellH = this.h / rows;
+        const cellW = this.w / (rows+1);
+        const cellH = this.h / (rows+1);
         
         // container
         ctx.strokeRect(this.x, this.y, this.w, this.h);
