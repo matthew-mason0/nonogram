@@ -51,4 +51,12 @@ class Renderer {
             }
         }
     }
+
+    getCellCoordsAt(mX, mY) {
+        let col = Math.floor((mX - this.x) / this.cellW) - 1;
+        let row = Math.floor((mY - this.y) / this.cellH) - 1;
+        if (col < 0 || row < 0) return null;
+        console.log(`Cell clicked: (${col}, ${row})`);
+        return [row, col];
+    }
 }
