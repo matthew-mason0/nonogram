@@ -92,8 +92,9 @@ class Renderer {
 
         this.ctx.fillStyle = "black";
         for (let col = 1; col < this.rows + 1; col++) {
+            const index = col - 1;
             this.ctx.fillText(
-                "T1",
+                colClues[index],
                 this.x + col * this.cellW,
                 this.y + this.cellH,
                 this.cellW,
@@ -101,8 +102,9 @@ class Renderer {
             );
         }
         for (let row = 1; row < this.rows + 1; row++) {
+            const index = row - 1;
             ctx.fillText(
-                "T2",
+                rowClues[index],
                 this.x,
                 this.y + row * this.cellH + this.cellH,
                 this.cellW,
