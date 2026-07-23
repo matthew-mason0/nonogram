@@ -1,9 +1,7 @@
 const canvas = document.getElementById("canvas");
 window.ctx = canvas.getContext("2d");
 
-const board = new Board(5);
-const renderer = new Renderer(ctx, board);
-renderer.drawBoard();
+const game = new Game(ctx);
 
 
 // click handling
@@ -13,12 +11,5 @@ canvas.addEventListener("click", (event) => {
 	const x = event.clientX - rect.left;
 	const y = event.clientY - rect.top;
 
-	mousePressed(x, y);
+	game.mousePressed(x, y);
 });
-
-function mousePressed(x, y) {
-    console.log(`mouse press at: ${x}, ${y}`);
-	const [rowPressed, colPressed] = renderer.getCellCoordsAt(x, y);
-	board.toggleCell(rowPressed, colPressed);
-	renderer.drawBoard();
-}
