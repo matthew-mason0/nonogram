@@ -1,7 +1,6 @@
 {
   "name": "puzzle1",
-  "width": 5,
-  "height": 5,
+  "rows": 5,
   "rowClues": [
     [1],
     [3],
