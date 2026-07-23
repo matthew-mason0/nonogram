@@ -6,22 +6,26 @@ class Renderer {
         this.y = 0;
         this.w = 400;
         this.h = 400;
-        this.cellW = this.w / (this.board.rows + 1);
-        this.cellH = this.h / (this.board.rows + 1);
+        this.rows = board.rows;
+        this.cellW = this.w / (board.rows + 1);
+        this.cellH = this.h / (board.rows + 1);
     }
 
     drawBoard() {
-        const rows = this.board.rows;
-        const ctx = this.ctx;
-        
-        // container
-        ctx.strokeRect(this.x, this.y, this.w, this.h);
-        ctx.fillStyle = "gray";
-        ctx.fillRect(this.x, this.y, this.cellW, this.cellH)
+        this.drawContainer();
+        this.drawHeaders();
+        this.drawCells();
+    }
 
-        // headers
+    drawContainer() {
+        this.ctx.strokeRect(this.x, this.y, this.w, this.h);
+        this.ctx.fillStyle = "gray";
+        this.ctx.fillRect(this.x, this.y, this.cellW, this.cellH);
+    }
+
+    drawHeaders() {
         ctx.strokeStyle = "black";
-        for (let col = 1; col < rows + 1; col++) {
+        for (let col = 1; col < this.rows + 1; col++) {
             ctx.strokeRect(
                 this.x + col * this.cellW,
                 this.y,
@@ -29,7 +33,7 @@ class Renderer {
                 this.cellH
             );
         }
-        for (let row = 1; row < rows + 1; row++) {
+        for (let row = 1; row < this.rows + 1; row++) {
             ctx.strokeRect(
                 this.x,
                 this.y + row * this.cellH,
@@ -37,11 +41,12 @@ class Renderer {
                 this.cellH
             );
         }
+    }
 
-        // cells
+    drawCells() {
         ctx.strokeStyle = "gray";
-        for (let row = 0; row < rows; row++) {
-            for (let col = 0; col < rows; col++) {
+        for (let row = 0; row < this.rows; row++) {
+            for (let col = 0; col < this.rows; col++) {
                 ctx.strokeRect(
                     this.x + this.cellW * (col+1),
                     this.y + this.cellH * (row+1),
@@ -58,6 +63,7 @@ class Renderer {
             }
         }
     }
+
     getCellColor(row, col) {
         const state = this.board.getCell(row, col).state;
         if (state === 0) return "white";
@@ -71,8 +77,8 @@ class Renderer {
         const row = Math.floor((mY - this.y) / this.cellH) - 1;
         if (col < 0 ||
             row < 0 ||
-            col >= this.board.rows ||
-            row >= this.board.rows
+            col >= this.rows ||
+            row >= this.rows
         ) return null;
         console.log(`Cell clicked: [${row}, ${col}]`);
         return {row, col};
