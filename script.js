@@ -1,7 +1,7 @@
 const canvas = document.getElementById("canvas");
-window.ctx = canvas.getContext("2d");
+const ctx = canvas.getContext("2d");
 
-const game = new Game(ctx);
+
 
 
 // click handling
@@ -13,3 +13,11 @@ canvas.addEventListener("click", (event) => {
 
 	game.mousePressed(x, y);
 });
+
+async function main() {
+    const puzzle = await PuzzleLoader.load("puzzle1.json");
+
+    const game = new Game(ctx, puzzle);
+}
+
+main();

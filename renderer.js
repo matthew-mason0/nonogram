@@ -75,6 +75,6 @@ class Renderer {
             row >= this.board.rows
         ) return null;
         console.log(`Cell clicked: [${row}, ${col}]`);
-        return [row, col];
+        return {row, col};
     }
 }
