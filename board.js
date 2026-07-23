@@ -21,6 +21,10 @@ class Board {
         return this.cells[i][j];
     }
 
+    getCellState(i, j) {
+        return this.cells[i][j].state;
+    }
+
     toggleCell(i, j) {
         this.cells[i][j].toggle();
     }

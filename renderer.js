@@ -65,7 +65,7 @@ class Renderer {
     }
 
     getCellColor(row, col) {
-        const state = this.board.getCell(row, col).state;
+        const state = this.board.getCellState(row, col);
         if (state === 0) return "white";
         else if (state === 1) return "black";
         else if (state === 2) return "blue";
