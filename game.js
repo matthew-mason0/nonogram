@@ -10,7 +10,7 @@ class Game {
 
     mousePressed(x, y) {
         console.log(`mouse press at: ${x}, ${y}`);
-        const {rowPressed, colPressed} = this.renderer.getCellCoordsAt(x, y);
+        const {row: rowPressed, col: colPressed} = this.renderer.getCellCoordsAt(x, y);
         this.board.toggleCell(rowPressed, colPressed);
         this.renderer.drawBoard();
     }
