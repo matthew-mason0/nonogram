@@ -1,8 +1,8 @@
 class Game {
     constructor(ctx, puzzle) {
         this.board = new Board(5);
-        this.renderer = new Renderer(ctx, this.board)
         this.puzzle = puzzle;
+        this.renderer = new Renderer(ctx, this.board, this.puzzle);
         console.log(this.puzzle);
 
         this.renderer.drawBoard();

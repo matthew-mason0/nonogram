@@ -1,5 +1,5 @@
 class Renderer {
-    constructor(ctx, board) {
+    constructor(ctx, board, puzzle) {
         this.ctx = ctx;
         this.board = board;
         this.x = 0;
