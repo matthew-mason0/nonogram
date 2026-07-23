@@ -3,7 +3,7 @@ class Puzzle {
         this.name = data.name;
         this.rows = data.rows;
         this.rowClues = data.rowClues;
-        this.columnClues = data.columnClues;
+        this.colClues = data.colClues;
         this.solution = data.solution;
     }
 
