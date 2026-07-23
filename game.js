@@ -13,7 +13,24 @@ class Game {
         const {row: rowPressed, col: colPressed} = this.renderer.getCellCoordsAt(x, y);
         this.board.toggleCell(rowPressed, colPressed);
         this.renderer.drawBoard();
+        this.checkState();
     }
 
+    checkState() {
+        const solutionCells = this.puzzle.solution;
+        const currentCells = this.board.cells;
+        const rows = this.board.rows;
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < rows; j++) {
+                if (!this.cellIsCorrect(solutionCells[i][j], currentCells[i][j])) return;
+            }
+        }
+        console.log("Solved!");
+    }
 
+    cellIsCorrect(solutionCell, currentCell) {
+        if (solutionCell === 0 && currentCell.state !== 1) return true;
+        if (solutionCell === 1 && currentCell.state === 1) return true;
+        return false;
+    }
 }

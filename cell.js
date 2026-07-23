@@ -5,7 +5,7 @@ class Cell {
         /*
         State:
         0 = unknown -> white
-        1 = filled -> dark-blue
+        1 = filled -> blue
         2 = empty -> black
         */
         this.state = 0;
