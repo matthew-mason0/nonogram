@@ -2,6 +2,7 @@ class Renderer {
     constructor(ctx, board, puzzle) {
         this.ctx = ctx;
         this.board = board;
+        this.puzzle = puzzle;
         this.x = 0;
         this.y = 0;
         this.w = 400;
@@ -13,8 +14,9 @@ class Renderer {
 
     drawBoard() {
         this.drawContainer();
-        this.drawHeaders();
+        this.drawHeaderBoxes();
         this.drawCells();
+        this.drawRowClues();
     }
 
     drawContainer() {
@@ -23,10 +25,10 @@ class Renderer {
         this.ctx.fillRect(this.x, this.y, this.cellW, this.cellH);
     }
 
-    drawHeaders() {
-        ctx.strokeStyle = "black";
+    drawHeaderBoxes() {
+        this.ctx.strokeStyle = "black";
         for (let col = 1; col < this.rows + 1; col++) {
-            ctx.strokeRect(
+            this.ctx.strokeRect(
                 this.x + col * this.cellW,
                 this.y,
                 this.cellW,
@@ -34,7 +36,7 @@ class Renderer {
             );
         }
         for (let row = 1; row < this.rows + 1; row++) {
-            ctx.strokeRect(
+            this.ctx.strokeRect(
                 this.x,
                 this.y + row * this.cellH,
                 this.cellW,
@@ -44,17 +46,17 @@ class Renderer {
     }
 
     drawCells() {
-        ctx.strokeStyle = "gray";
+        this.ctx.strokeStyle = "gray";
         for (let row = 0; row < this.rows; row++) {
             for (let col = 0; col < this.rows; col++) {
-                ctx.strokeRect(
+                this.ctx.strokeRect(
                     this.x + this.cellW * (col+1),
                     this.y + this.cellH * (row+1),
                     this.cellW,
                     this.cellH
                 );
-                ctx.fillStyle = this.getCellColor(row, col);
-                ctx.fillRect(
+                this.ctx.fillStyle = this.getCellColor(row, col);
+                this.ctx.fillRect(
                     this.x + this.cellW * (col+1),
                     this.y + this.cellH * (row+1),
                     this.cellW,
@@ -82,5 +84,30 @@ class Renderer {
         ) return null;
         console.log(`Cell clicked: [${row}, ${col}]`);
         return {row, col};
+    }
+
+    drawRowClues() {
+        const rowClues = this.puzzle.rowClues;
+        const colClues = this.puzzle.colClues;
+
+        this.ctx.fillStyle = "black";
+        for (let col = 1; col < this.rows + 1; col++) {
+            this.ctx.fillText(
+                "T1",
+                this.x + col * this.cellW,
+                this.y + this.cellH,
+                this.cellW,
+                this.cellH
+            );
+        }
+        for (let row = 1; row < this.rows + 1; row++) {
+            ctx.fillText(
+                "T2",
+                this.x,
+                this.y + row * this.cellH + this.cellH,
+                this.cellW,
+                this.cellH
+            );
+        }
     }
 }
