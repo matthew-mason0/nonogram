@@ -25,12 +25,16 @@ class Game {
                 if (!this.cellIsCorrect(solutionCells[i][j], currentCells[i][j])) return;
             }
         }
-        console.log("Solved!");
+        this.solved();
     }
 
     cellIsCorrect(solutionCell, currentCell) {
         if (solutionCell === 0 && currentCell.state !== 1) return true;
         if (solutionCell === 1 && currentCell.state === 1) return true;
         return false;
+    }
+
+    solved() {
+        console.log("Solved!");
     }
 }
