@@ -1,8 +1,11 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+
+const params = new URLSearchParams(window.location.search);
+const puzzleNumber = params.get("puzzle");
+console.log(puzzleNumber);
+
 let game;
-
-
 
 // click handling
 canvas.addEventListener("click", (event) => {
@@ -14,7 +17,7 @@ canvas.addEventListener("click", (event) => {
 });
 
 async function main() {
-    const puzzle = await PuzzleLoader.load("../puzzles/puzzle1.json");
+    const puzzle = await PuzzleLoader.load(`../puzzles/puzzle${puzzleNumber}.json`);
 
     game = new Game(ctx, puzzle);
 }

@@ -53,6 +53,6 @@ canvas.addEventListener("click", function(event) {
         mouseY >= button.y &&
         mouseY <= button.y + button.height
     ) {
-        window.location.href = "play/play.html";
+        window.location.href = "play/play.html?puzzle=1";
     }
 });
