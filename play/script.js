@@ -14,7 +14,7 @@ canvas.addEventListener("click", (event) => {
 });
 
 async function main() {
-    const puzzle = await PuzzleLoader.load("play/puzzle1.json");
+    const puzzle = await PuzzleLoader.load("../puzzles/puzzle1.json");
 
     game = new Game(ctx, puzzle);
 }
