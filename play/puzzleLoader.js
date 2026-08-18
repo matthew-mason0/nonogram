@@ -1,3 +1,5 @@
+import { Puzzle } from "./puzzle.js";
+
 export class PuzzleLoader {
     static async load(file) {
         const response = await fetch(file);
