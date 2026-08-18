@@ -1,3 +1,6 @@
+import { Board } from "./board.js";
+import { Renderer } from "./renderer.js";
+
 export class Game {
     constructor(ctx, puzzle) {
         this.board = new Board(5);

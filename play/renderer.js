@@ -1,4 +1,4 @@
-class Renderer {
+export class Renderer {
     constructor(ctx, board, puzzle) {
         this.ctx = ctx;
         this.board = board;

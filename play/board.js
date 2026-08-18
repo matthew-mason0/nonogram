@@ -1,4 +1,4 @@
-class Board {
+export class Board {
     constructor(rows) {
         this.rows = rows;
         this.cells = this.createCells(this.rows);
