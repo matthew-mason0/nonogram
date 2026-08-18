@@ -123,7 +123,10 @@ export class Renderer {
         this.ctx.shadowBlur = 20;
         this.ctx.fillRect(box.x, box.y, box.w, box.h);
         this.ctx.strokeRect(box.x, box.y, box.w, box.h);
-        this.ctx.fillText("Solved!", box.x, box.y+box.h/2);
         this.ctx.shadowBlur = 0;
+
+        // Solved text
+        this.ctx.fillStyle = "#000000";
+        this.ctx.fillText("Solved!", box.x+box.w/3, box.y+box.h/5);
     }
 }
