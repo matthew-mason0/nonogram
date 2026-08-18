@@ -112,4 +112,21 @@ export class Renderer {
             );
         }
     }
+
+    drawFinishScreen() {
+        const box = {
+            x: 75,
+            y: 100,
+            w: 250,
+            h: 200
+        };
+        this.ctx.fillStyle = "#f8f3b9";
+        this.ctx.strokeStyle = "#000000";
+        this.ctx.shadowColor = "#000000";
+        this.ctx.shadowBlur = 20;
+        this.ctx.fillRect(box.x, box.y, box.w, box.h);
+        this.ctx.strokeRect(box.x, box.y, box.w, box.h);
+        this.ctx.fillText("Solved!", box.x, box.y+box.h);
+        this.ctx.shadowBlur = 0;
+    }
 }
