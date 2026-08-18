@@ -39,5 +39,6 @@ export class Game {
 
     solved() {
         console.log("Solved!");
+        this.renderer.drawFinishScreen();
     }
 }
