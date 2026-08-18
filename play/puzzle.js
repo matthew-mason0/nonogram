@@ -1,4 +1,4 @@
-class Puzzle {
+export class Puzzle {
     constructor(data) {
         this.name = data.name;
         this.rows = data.rows;

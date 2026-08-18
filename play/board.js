@@ -1,4 +1,6 @@
-class Board {
+import { Cell } from "./cell.js";
+
+export class Board {
     constructor(rows) {
         this.rows = rows;
         this.cells = this.createCells(this.rows);
