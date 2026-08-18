@@ -90,15 +90,14 @@ export class Renderer {
         const rowClues = this.puzzle.rowClues;
         const colClues = this.puzzle.colClues;
 
+        this.ctx.font = "20px sans-serif";
         this.ctx.fillStyle = "black";
         for (let col = 1; col < this.rows + 1; col++) {
             const index = col - 1;
             this.ctx.fillText(
                 colClues[index],
                 this.x + col * this.cellW,
-                this.y + this.cellH,
-                this.cellW,
-                this.cellH
+                this.y + this.cellH
             );
         }
         for (let row = 1; row < this.rows + 1; row++) {
@@ -106,9 +105,7 @@ export class Renderer {
             this.ctx.fillText(
                 rowClues[index],
                 this.x,
-                this.y + row * this.cellH + this.cellH,
-                this.cellW,
-                this.cellH
+                this.y + row * this.cellH + this.cellH
             );
         }
     }
@@ -126,7 +123,7 @@ export class Renderer {
         this.ctx.shadowBlur = 20;
         this.ctx.fillRect(box.x, box.y, box.w, box.h);
         this.ctx.strokeRect(box.x, box.y, box.w, box.h);
-        this.ctx.fillText("Solved!", box.x, box.y+box.h);
+        this.ctx.fillText("Solved!", box.x, box.y+box.h/2);
         this.ctx.shadowBlur = 0;
     }
 }
