@@ -13,7 +13,7 @@ canvas.addEventListener("click", (event) => {
 
 	const x = event.clientX - rect.left;
 	const y = event.clientY - rect.top;
-	game.mousePressed(x, y);
+	if (game) game.mousePressed(x, y);
 });
 
 async function main() {
