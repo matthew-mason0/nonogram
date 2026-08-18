@@ -103,7 +103,7 @@ export class Renderer {
         }
         for (let row = 1; row < this.rows + 1; row++) {
             const index = row - 1;
-            ctx.fillText(
+            this.ctx.fillText(
                 rowClues[index],
                 this.x,
                 this.y + row * this.cellH + this.cellH,
