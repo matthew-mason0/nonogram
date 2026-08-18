@@ -5,8 +5,7 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 const params = new URLSearchParams(window.location.search);
-const puzzleNumber = params.get("puzzle");
-console.log(puzzleNumber);
+const puzzleNumber = params.get("puzzle") || 1;
 
 let game;
 
