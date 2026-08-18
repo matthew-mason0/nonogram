@@ -1,4 +1,4 @@
-class Game {
+export class Game {
     constructor(ctx, puzzle) {
         this.board = new Board(5);
         this.puzzle = puzzle;
