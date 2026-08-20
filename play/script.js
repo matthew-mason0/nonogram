@@ -1,5 +1,6 @@
 import { PuzzleLoader } from "./puzzleLoader.js";
 import { Game } from "./game.js";
+import { gameState } from "./state-control/gameState.js";
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");

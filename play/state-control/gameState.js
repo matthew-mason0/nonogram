@@ -1,3 +1,4 @@
+import { Timer } from "./timer.js";
 class GameState {
     constructor() {
         this.timer = new Timer();
