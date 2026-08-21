@@ -1,10 +1,19 @@
 import { Timer } from "./timer.js";
+
 class GameState {
     constructor() {
+        this.levelNumber = 0;
         this.timer = new Timer();
         this.paused = true;
         this.finished = false;
         this.completeTime = null;
+    }
+
+    setLevelNumber(levelNumber) {
+        this.levelNumber = levelNumber;
+    }
+    getLevelNumber() {
+        return this.levelNumber;
     }
 
     getTime() {
