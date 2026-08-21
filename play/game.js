@@ -1,16 +1,19 @@
 import { Board } from "./board.js";
 import { Renderer } from "./renderer.js";
 import { gameState } from "./state-control/gameState.js";
+import { Hud } from "./state-control/hud.js";
 
 export class Game {
     constructor(ctx, puzzle, puzzleNumber) {
         this.board = new Board(5);
         this.puzzle = puzzle;
         this.renderer = new Renderer(ctx, this.board, this.puzzle);
-        console.log(puzzleNumber);
         gameState.setLevelNumber(puzzleNumber);
-        gameState.begin();
+
+        this.hud = new Hud();
+
         this.renderer.drawBoard();
+        gameState.begin();
     }
 
     mousePressed(x, y) {

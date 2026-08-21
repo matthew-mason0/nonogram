@@ -1,27 +1,36 @@
 import { gameState } from "./gameState.js";
 
-const levelDisplay = document.getElementById("level-display");
-const timer = document.getElementById("timer");
-const pauseButton = document.getElementById("pause-button");
-const restartButton = document.getElementById("restart-button");
-const exitButton = document.getElementById("exit-button");
+export class Hud {
+    constructor() {
+        this.levelDisplay = document.getElementById("level-display");
+        this.timer = document.getElementById("timer");
+        this.pauseButton = document.getElementById("pause-button");
+        this.restartButton = document.getElementById("restart-button");
+        this.exitButton = document.getElementById("exit-button");
+    
+        this.addButtonListeners();
+        this.updateLevelDisplay();
+        setInterval(this.updateTimerDisplay, 1000);
+    }
 
-pauseButton.addEventListener("click", (event) => {
-    gameState.togglePause();
-});
-restartButton.addEventListener("click", (event) => {
-    console.log("restart button pressed");
-});
-exitButton.addEventListener("click", (event) => {
-    console.log("exit button pressed");
-});
+    addButtonListeners() {
+        this.pauseButton.addEventListener("click", (event) => {
+            gameState.togglePause();
+        });
+        this.restartButton.addEventListener("click", (event) => {
+            console.log("restart button pressed");
+        });
+        this.exitButton.addEventListener("click", (event) => {
+            console.log("exit button pressed");
+        });
+    }
 
-setInterval(updateTimerDisplay, 1000);
+    updateTimerDisplay() {
+        const time = gameState.getTime();
+        this.timer.textContent = time;
+    }
 
-function updateTimerDisplay() {
-    const time = gameState.getTime();
-    timer.textContent = time;
-}
-function updateLevelDisplay() {
-    levelDisplay.textContent = "Level " + gameState.getLevelNumber();
+    updateLevelDisplay() {
+        this.levelDisplay.textContent = "Level " + gameState.getLevelNumber();
+    }
 }
