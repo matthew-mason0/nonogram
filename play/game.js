@@ -1,5 +1,6 @@
 import { Board } from "./board.js";
 import { Renderer } from "./renderer.js";
+import { gameState } from "./state-control/gameState.js";
 
 export class Game {
     constructor(ctx, puzzle) {
@@ -7,7 +8,7 @@ export class Game {
         this.puzzle = puzzle;
         this.renderer = new Renderer(ctx, this.board, this.puzzle);
         console.log(this.puzzle);
-
+        gameState.begin();
         this.renderer.drawBoard();
     }
 
@@ -39,6 +40,7 @@ export class Game {
 
     solved() {
         console.log("Solved!");
+        gameState.finish();
         this.renderer.drawFinishScreen();
     }
 }
