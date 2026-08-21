@@ -22,3 +22,6 @@ function updateTimerDisplay() {
     const time = gameState.getTime();
     timer.textContent = time;
 }
+function updateLevelDisplay() {
+    levelDisplay.textContent = "Level " + gameState.getLevelNumber();
+}
