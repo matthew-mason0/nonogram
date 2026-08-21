@@ -15,3 +15,10 @@ restartButton.addEventListener("click", (event) => {
 exitButton.addEventListener("click", (event) => {
     console.log("exit button pressed");
 });
+
+setInterval(updateTimerDisplay, 1000);
+
+function updateTimerDisplay() {
+    const time = gameState.getTime();
+    timer.textContent = time;
+}
