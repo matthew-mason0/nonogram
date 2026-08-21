@@ -29,6 +29,14 @@ export class Timer {
             acc += bit * this.pauseLog[i];
             bit *= -1;
         }
-        return Date.now(); - acc;
+        console.log(acc);
+        return this.format(Date.now() - acc);
+    }
+
+    format(ms) {
+        const allSeconds = Math.floor(ms/1000);
+        const minutes = String(Math.floor(allSeconds / 60)).padStart(2, "0");
+        const seconds = String(allSeconds % 60).padStart(2, "0");
+        return `${minutes}:${seconds}`;
     }
 }
