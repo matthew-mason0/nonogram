@@ -3,11 +3,12 @@ import { Renderer } from "./renderer.js";
 import { gameState } from "./state-control/gameState.js";
 
 export class Game {
-    constructor(ctx, puzzle) {
+    constructor(ctx, puzzle, puzzleNumber) {
         this.board = new Board(5);
         this.puzzle = puzzle;
         this.renderer = new Renderer(ctx, this.board, this.puzzle);
-        console.log(this.puzzle);
+        console.log(puzzleNumber);
+        gameState.setLevelNumber(puzzleNumber);
         gameState.begin();
         this.renderer.drawBoard();
     }
