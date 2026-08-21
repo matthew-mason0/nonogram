@@ -7,6 +7,10 @@ class GameState {
         this.completeTime = null;
     }
 
+    getTime() {
+        this.timer.peek();
+    }
+
     togglePause() {
         if (!this.paused) this.pause();
         else this.resume();
