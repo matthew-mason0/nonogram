@@ -27,7 +27,7 @@ export class Hud {
 
     updateTimerDisplay() {
         const time = gameState.getTime();
-        this.timer.textContent = time;
+        if (!gameState.paused) this.timer.textContent = time;
     }
 
     updateLevelDisplay() {
