@@ -29,7 +29,6 @@ export class Timer {
             acc += bit * this.pauseLog[i];
             bit *= -1;
         }
-        console.log(acc);
         return this.format(Date.now() - acc);
     }
 
