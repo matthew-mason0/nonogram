@@ -8,7 +8,7 @@ class GameState {
     }
 
     getTime() {
-        this.timer.peek();
+        return this.timer.peek();
     }
 
     togglePause() {
