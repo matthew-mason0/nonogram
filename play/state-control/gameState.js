@@ -44,6 +44,7 @@ class GameState {
 
     exit() {
         this.finished = false;
+        window.location.href = "../index.html";
     }
 }
 
