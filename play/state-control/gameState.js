@@ -7,6 +7,8 @@ class GameState {
         this.paused = true;
         this.finished = false;
         this.completeTime = null;
+
+        this.game = null;
     }
 
     setLevelNumber(levelNumber) {
@@ -45,6 +47,15 @@ class GameState {
     exit() {
         this.finished = false;
         window.location.href = "../index.html";
+    }
+
+    restart() {
+        console.log(this.game);
+        if (this.game) this.game.restart();
+    }
+
+    setGame(game) {
+        this.game = game;
     }
 }
 
