@@ -42,6 +42,10 @@ export class Game {
         return false;
     }
 
+    restart() {
+        this.board.clear();
+    }
+
     solved() {
         console.log("Solved!");
         gameState.finish();
