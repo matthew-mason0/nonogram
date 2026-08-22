@@ -1,0 +1,25 @@
+#hud {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    width: 400px;
+    height: 50px;
+
+    border: 1px solid black;
+    background-color: #f8f3b9;
+}
+
+#hud-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+#timer {
+    font-family: monospace;
+}
+
+#canvas {
+    border: 1px solid black;
+}

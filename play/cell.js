@@ -15,4 +15,8 @@ export class Cell {
         this.state += 1;
         this.state %= 3;
     }
+
+    reset() {
+        this.state = 0;
+    }
 }

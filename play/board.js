@@ -30,4 +30,12 @@ export class Board {
     toggleCell(i, j) {
         this.cells[i][j].toggle();
     }
+
+    clear() {
+        for (let i = 0; i < this.rows; i++) {
+            for (let j = 0; j < this.rows; j++) {
+                this.cells[i][j].reset();
+            }
+        }
+    }
 }

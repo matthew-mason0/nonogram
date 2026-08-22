@@ -1,14 +1,19 @@
 import { Board } from "./board.js";
 import { Renderer } from "./renderer.js";
+import { gameState } from "./state-control/gameState.js";
+import { Hud } from "./state-control/hud.js";
 
 export class Game {
-    constructor(ctx, puzzle) {
+    constructor(ctx, puzzle, puzzleNumber) {
         this.board = new Board(5);
         this.puzzle = puzzle;
         this.renderer = new Renderer(ctx, this.board, this.puzzle);
-        console.log(this.puzzle);
+        gameState.setLevelNumber(puzzleNumber);
+
+        this.hud = new Hud();
 
         this.renderer.drawBoard();
+        gameState.begin();
     }
 
     mousePressed(x, y) {
@@ -37,8 +42,15 @@ export class Game {
         return false;
     }
 
+    restart() {
+        console.log("game restart!")
+        this.board.clear();
+        this.renderer.drawBoard();
+    }
+
     solved() {
         console.log("Solved!");
+        gameState.finish();
         this.renderer.drawFinishScreen();
     }
 }
