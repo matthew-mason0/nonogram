@@ -43,7 +43,9 @@ export class Game {
     }
 
     restart() {
+        console.log("game restart!")
         this.board.clear();
+        this.renderer.drawBoard();
     }
 
     solved() {
