@@ -18,7 +18,7 @@ export class Hud {
             this.togglePause();
         });
         this.restartButton.addEventListener("click", (event) => {
-            console.log("restart button pressed");
+            gameState.restart();
         });
         this.exitButton.addEventListener("click", (event) => {
             gameState.exit();
