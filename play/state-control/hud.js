@@ -15,7 +15,7 @@ export class Hud {
 
     addButtonListeners() {
         this.pauseButton.addEventListener("click", (event) => {
-            gameState.togglePause();
+            this.togglePause();
         });
         this.restartButton.addEventListener("click", (event) => {
             console.log("restart button pressed");
@@ -32,5 +32,15 @@ export class Hud {
 
     updateLevelDisplay() {
         this.levelDisplay.textContent = "Level " + gameState.getLevelNumber();
+    }
+
+    togglePause() {
+        if (gameState.paused) {
+            gameState.resume();
+            this.pauseButton.textContent = "⏸";
+        } else {
+            gameState.pause();
+            this.pauseButton.textContent = "▶︎";
+        }
     }
 }

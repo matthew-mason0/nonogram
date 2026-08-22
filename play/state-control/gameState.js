@@ -20,11 +20,6 @@ class GameState {
         return this.timer.peek();
     }
 
-    togglePause() {
-        if (!this.paused) this.pause();
-        else this.resume();
-    }
-
     begin() {
         this.finished = false;
         this.paused = false;
